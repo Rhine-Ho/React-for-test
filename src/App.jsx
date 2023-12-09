@@ -1,19 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {Nav, Home, Test1, Test2, Test3, Test4} from "./components";
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Nav, Home, Test1, Test2, Test3, Test4 } from "./components";
 
 function App() {
- 
-
   return (
     <>
-    <Router>
-      
+      <Router>
         <header>
           <Nav />
         </header>
-      
+
         <main>
           <Routes>
             <Route path="/Home" element={<Home />} />
@@ -22,11 +18,10 @@ function App() {
             <Route path="/Test3" element={<Test3 />} />
             <Route path="/Test4" element={<Test4 />} />
           </Routes>
-       </main>
-      
-    </Router>
+        </main>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
