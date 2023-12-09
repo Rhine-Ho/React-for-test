@@ -1,34 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Test3() {
   // 重構後的程式碼使用了 useState  Hook 來管理 firstName 和 lastName 的狀態。
   // 使用 useState  Hook 可以有效簡化代碼結構彈性也更高。
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   // 單一函式的好處在於，每個函式都專注於單一功能，這樣在需要時能更輕鬆地找到並修改特定的邏輯。
   // 這種分離和模組化的方法使代碼更易讀、更易於理解和維護。
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
-  };// 處理FirstName變化的函式
+  }; // 處理FirstName變化的函式
 
   const handleLastNameChange = (event) => {
     setLastName(event.target.value);
-  };// 處理LastName變化的函式
+  }; // 處理LastName變化的函式
 
   // 模板字串將 firstName 和 lastName 組合成一個名字字串，並使用 .trim() 方法去除多餘的空格。
-  const formattedName = `${firstName} ${lastName}`.trim();// 模板字串提供了更加方便、清晰和直觀的方法來建立複雜的字串，並使程式碼更具可讀性和維護性。
+  const formattedName = `${firstName} ${lastName}`.trim(); // 模板字串提供了更加方便、清晰和直觀的方法來建立複雜的字串，並使程式碼更具可讀性和維護性。
 
   // 在組件渲染時打印 formattedName 的值到控制台
- useEffect(() => {
-  if (firstName && lastName) {
-    console.log('Formatted Name:', formattedName);
-  }
-}, [firstName, lastName]);
-//在 useEffect 內部，formattedName 是一個衍生自 firstName 和 lastName 的值。
-//這個衍生值並不會觸發 useEffect 本身，因為 useEffect 的依賴陣列中僅包含了 firstName 和 lastName，而非 formattedName。
-//因此，只有在 firstName 或 lastName 改變且都存在（非空值）的情況下，才會觸發 useEffect 內部的 console.log，而不會因 formattedName 的改變而進入迴圈。
+  useEffect(() => {
+    if (firstName && lastName) {
+      console.log("Formatted Name:", formattedName);
+    }
+  }, [firstName, lastName]);
+  //在 useEffect 內部，formattedName 是一個衍生自 firstName 和 lastName 的值。
+  //這個衍生值並不會觸發 useEffect 本身，因為 useEffect 的依賴陣列中僅包含了 firstName 和 lastName，而非 formattedName。
+  //因此，只有在 firstName 或 lastName 改變且都存在（非空值）的情況下，才會觸發 useEffect 內部的 console.log，而不會因 formattedName 的改變而進入迴圈。
 
   return (
     <section>
@@ -66,11 +65,11 @@ function Test3() {
             </p>
           </div>
 
-       {/* 原始程式碼加註解 */}
+          {/* 原始程式碼加註解 */}
           <div className="bg-slate-600 rounded-lg whitespace-pre-line p-6 px-10">
             <h2 className="text-lg text-center font-bold">測試題原始程式碼</h2>
-             <div>
-             {`
+            <div>
+              {`
                 function formatName(firstName, lastName) {
                   // 用來儲存最終格式化後的名字字串的變數，預設為空值。
                   let formattedName = '';
@@ -89,15 +88,16 @@ function Test3() {
                     return formattedName;
                       }
             `}
-             </div>
-             <p className="bg-slate-50 break-line w-1/2 mt-2">
-             在原始程式碼中，使用了一個獨立的 formatName 函式，
-             每次 firstName 或 lastName 改變時都調用一次formatName 函式。
-             這是因為 formattedName 是由這個函式計算而來的。
-             且原始程式碼透過使用兩個獨立的 if 條件判斷來檢查輸入值的變化。
-             每次輸入框的值變化時，都會觸發 formatName 的執行，即使其中一個輸入框是空的，都會進入迴圈重新計算 formattedName。
-             這可能會帶來一些不必要的計算開銷。
-             </p>
+            </div>
+            <p className="bg-slate-50 break-line w-1/2 mt-2">
+              在原始程式碼中，使用了一個獨立的 formatName 函式， 每次 firstName
+              或 lastName 改變時都調用一次formatName 函式。 這是因為
+              formattedName 是由這個函式計算而來的。
+              且原始程式碼透過使用兩個獨立的 if 條件判斷來檢查輸入值的變化。
+              每次輸入框的值變化時，都會觸發 formatName
+              的執行，即使其中一個輸入框是空的，都會進入迴圈重新計算
+              formattedName。 這可能會帶來一些不必要的計算開銷。
+            </p>
           </div>
         </div>
       </div>
