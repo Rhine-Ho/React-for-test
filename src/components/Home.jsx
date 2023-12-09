@@ -9,7 +9,7 @@ const Home = () => {
           <img
             src={nickname}
             alt="Avatar"
-            className="w-32 h-32 rounded-full mb-4"
+            className="w-16 h-16 rounded-full mb-4 sm:w-32 sm:h-32"
           />
           <h2 className="text-xl font-bold">Hello.👋🏻 I'm Rhine.</h2>
           <p className="text-white font-bold drop-shadow-md">Welcome.</p>
